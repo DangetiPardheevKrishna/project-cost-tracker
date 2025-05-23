@@ -17,6 +17,18 @@ A mini web application that helps users manage project costs effectively. Users 
 
 ---
 
+## 🧑‍💻 Tech Stack
+
+- ⚛️ **React.js** – Frontend JavaScript framework
+- 🛠️ **Vite** – Fast development build tool
+- 🔄 **Redux Toolkit** – State management
+- 🎨 **Chakra UI** – Component library for UI
+- 🔥 **Firebase** – Authentication & Firestore database
+- 🌐 **React Router** – Client-side routing
+- 💾 **localStorage** – Optional session persistence
+
+---
+
 ## 📁 Project Structure
 
 ```bash
@@ -73,17 +85,4 @@ appId=your_app_id
 ```bash
 npm run dev
 Open your browser and navigate to: http://localhost:5173
-```
-
-```bash
-🛠 Tech Stack
-React.js
-
-Redux Toolkit
-
-Firebase (Auth + Firestore)
-
-Chakra UI
-
-Vite for development build tool
 ```
