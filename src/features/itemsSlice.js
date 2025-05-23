@@ -39,25 +39,6 @@ export const fetchItems = createAsyncThunk(
   }
 );
 
-// Async thunk for adding an item
-// export const addItem = createAsyncThunk(
-//   "items/addItem",
-//   async ({ name, cost }, { rejectWithValue }) => {
-//     try {
-//       const userId = auth.currentUser.uid;
-//       const id = uuidv4();
-//       await setDoc(doc(db, "Items", id), {
-//         Cost: parseFloat(cost),
-//         Name: name,
-//         UserId: userId,
-//       });
-//       return { id, Cost: parseFloat(cost), Name: name, UserId: userId };
-//     } catch (error) {
-//       return rejectWithValue(error.message);
-//     }
-//   }
-// );
-
 export const addItem = createAsyncThunk(
   "items/addItem",
   async ({ name, cost }, { rejectWithValue }) => {

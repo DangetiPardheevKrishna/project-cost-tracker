@@ -32,7 +32,7 @@ const Items = () => {
   const [itemName, setItemName] = useState("");
   const [cost, setItemCost] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortBy, setSortBy] = useState("name-asc"); // default sort by name ascending
+  const [sortBy, setSortBy] = useState("name-asc");
   const toast = useToast();
   const [isAdding, setIsAdding] = useState(false);
 

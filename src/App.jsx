@@ -3,16 +3,14 @@ import { Route, Routes } from "react-router-dom";
 import SignUp from "./pages/auth/SignUp";
 import Login from "./pages/auth/Login";
 import React, { lazy, Suspense } from "react";
-import Home from "./pages/home";
+import Home from "./pages/Home";
 
-// Lazy load the ToastContainer
 const ToastContainer = lazy(() =>
   import("react-toastify").then((module) => ({
     default: module.ToastContainer,
   }))
 );
 
-// Lazy load the toast function
 export const toast = lazy(() =>
   import("react-toastify").then((module) => ({
     default: module.toast,
