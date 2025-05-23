@@ -42,7 +42,7 @@ const Login = () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/");
+      navigate("/home");
       toast.success("Login successful!", {
         position: "bottom-right",
       });
@@ -123,7 +123,7 @@ const Login = () => {
 
         <Text fontSize="sm" textAlign="center" color="gray.600">
           New user?{" "}
-          <Link href="/signup" color="purple.600" fontWeight="medium">
+          <Link href="/" color="purple.600" fontWeight="medium">
             Sign up
           </Link>
         </Text>

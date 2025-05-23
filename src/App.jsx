@@ -20,9 +20,9 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
       <Suspense fallback={null}>
         {" "}

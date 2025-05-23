@@ -62,7 +62,7 @@ const SignUp = () => {
       });
 
       toast.success("Registration successful!");
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       toast.error(error.message);
       console.error(error);
@@ -96,7 +96,7 @@ const SignUp = () => {
       }
 
       toast.success("Google sign up successful!");
-      navigate("/");
+      navigate("/home");
     } catch (error) {
       toast.error(error.message);
       console.error(error);
