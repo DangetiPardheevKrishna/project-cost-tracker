@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import {
+  browserLocalPersistence,
+  getAuth,
+  GoogleAuthProvider,
+  setPersistence,
+} from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -11,20 +16,12 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
 };
 
-export const initFirebase = async () => {
-  const { initializeApp } = await import("firebase/app");
-  const { getAuth } = await import("firebase/auth");
-  const { getFirestore } = await import("firebase/firestore");
-
-  const app = initializeApp(firebaseConfig);
-  return {
-    auth: getAuth(app),
-    db: getFirestore(app),
-  };
-};
-
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth();
+
+export const auth = getAuth(app);
+setPersistence(auth, browserLocalPersistence).catch((error) => {
+  console.error("Error setting persistence:", error);
+});
 export const db = getFirestore(app);
 export const googleProvider = new GoogleAuthProvider();
 export default app;

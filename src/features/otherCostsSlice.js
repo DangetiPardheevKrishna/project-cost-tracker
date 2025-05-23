@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { db } from "../firebase/firebase";
+import { auth, db } from "../firebase/firebase";
 import {
   collection,
   addDoc,
@@ -7,12 +7,24 @@ import {
   updateDoc,
   doc,
   deleteDoc,
+  query,
+  where,
 } from "firebase/firestore";
 
+const getCurrentUserId = () => {
+  const user = auth.currentUser;
+  if (!user) throw new Error("User not authenticated");
+  return user.uid;
+};
 export const fetchOtherCosts = createAsyncThunk(
-  "otherCosts/fetchOtherCosts",
+  "OtherCosts/fetchOtherCosts",
   async () => {
-    const querySnapshot = await getDocs(collection(db, "otherCosts"));
+    const userId = getCurrentUserId();
+    const q = query(
+      collection(db, "OtherCosts"),
+      where("userId", "==", userId)
+    );
+    const querySnapshot = await getDocs(q);
     return querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -21,9 +33,11 @@ export const fetchOtherCosts = createAsyncThunk(
 );
 
 export const addOtherCost = createAsyncThunk(
-  "otherCosts/addOtherCost",
+  "OtherCosts/addOtherCost",
   async ({ description, amount }) => {
-    const docRef = await addDoc(collection(db, "otherCosts"), {
+    const userId = getCurrentUserId();
+    const docRef = await addDoc(collection(db, "OtherCosts"), {
+      userId,
       Description: description,
       Amount: parseFloat(amount),
       createdAt: new Date().toISOString(),
@@ -37,9 +51,9 @@ export const addOtherCost = createAsyncThunk(
 );
 
 export const updateOtherCost = createAsyncThunk(
-  "otherCosts/updateOtherCost",
+  "OtherCosts/updateOtherCost",
   async ({ id, description, amount }) => {
-    await updateDoc(doc(db, "otherCosts", id), {
+    await updateDoc(doc(db, "OtherCosts", id), {
       Description: description,
       Amount: parseFloat(amount),
     });
@@ -48,15 +62,15 @@ export const updateOtherCost = createAsyncThunk(
 );
 
 export const deleteOtherCost = createAsyncThunk(
-  "otherCosts/deleteOtherCost",
-  async (id) => {
-    await deleteDoc(doc(db, "otherCosts", id));
+  "OtherCosts/deleteOtherCost",
+  async ({ id }) => {
+    await deleteDoc(doc(db, "OtherCosts", id));
     return id;
   }
 );
 
-const otherCostsSlice = createSlice({
-  name: "otherCosts",
+export const otherCostsSlice = createSlice({
+  name: "OtherCosts",
   initialState: {
     items: [],
     loading: false,
@@ -80,6 +94,9 @@ const otherCostsSlice = createSlice({
     },
     setEditAmount: (state, action) => {
       state.editAmount = action.payload;
+    },
+    clearUserCosts: (state) => {
+      state.items = [];
     },
   },
   extraReducers: (builder) => {
@@ -119,6 +136,7 @@ export const {
   cancelEditing,
   setEditDescription,
   setEditAmount,
+  clearUserCosts,
 } = otherCostsSlice.actions;
 
 export default otherCostsSlice.reducer;

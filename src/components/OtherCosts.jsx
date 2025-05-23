@@ -26,6 +26,7 @@ import {
   setEditDescription,
   setEditAmount,
 } from "../features/otherCostsSlice";
+import { auth } from "../firebase/firebase";
 
 const OtherCosts = () => {
   const { isOpen, onToggle } = useDisclosure();
