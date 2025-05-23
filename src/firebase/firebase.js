@@ -3,12 +3,12 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDHK0juFXENLM6gqDItX5HIYUC0CJ_LbFo",
-  authDomain: "project-cost-tracker-66b06.firebaseapp.com",
-  projectId: "project-cost-tracker-66b06",
-  storageBucket: "project-cost-tracker-66b06.firebasestorage.app",
-  messagingSenderId: "836044820033",
-  appId: "1:836044820033:web:220b64efd97e2e55f7c0c0",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
