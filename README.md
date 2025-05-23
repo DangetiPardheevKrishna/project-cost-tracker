@@ -25,7 +25,6 @@ A mini web application that helps users manage project costs effectively. Users 
 - 🎨 **Chakra UI** – Component library for UI
 - 🔥 **Firebase** – Authentication & Firestore database
 - 🌐 **React Router** – Client-side routing
-- 💾 **localStorage** – Optional session persistence
 
 ---
 
