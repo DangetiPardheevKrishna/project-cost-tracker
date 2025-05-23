@@ -10,7 +10,7 @@ import {
   onSnapshot,
   getDoc,
 } from "firebase/firestore";
-import { db, auth } from "../firebase";
+import { db, auth } from "../firebase/firebase";
 import { v4 as uuidv4 } from "uuid";
 
 // Async thunk for fetching items

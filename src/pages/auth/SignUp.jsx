@@ -18,7 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { Eye, EyeOff } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
-import { auth, db, googleProvider } from "../../firebase.js";
+import { auth, db, googleProvider } from "../../firebase/firebase.js";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { setDoc, doc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";

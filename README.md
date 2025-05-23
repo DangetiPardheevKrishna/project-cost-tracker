@@ -12,8 +12,7 @@ A mini web application that helps users manage project costs effectively. Users 
 - 📊 **State Management with Redux** – Efficient and scalable data flow.
 - 🎨 **Chakra UI** – Responsive and modern user interface.
 - ☁️ **Firebase Firestore** – Persistent backend for storing data securely.
-- 💾 **localStorage Support** _(Bonus)_ – Optionally retains session state.
-- 📈 **Sorting & Filtering** _(Bonus)_ – Easy budget management for large projects.
+- 📈 **Sorting & Filtering** – Easy budget management for large projects.
 - 📱 **Responsive Design** – Works across desktop and mobile devices.
 
 ---
@@ -26,13 +25,65 @@ Project-Cost-Tracker/
 ├── public/               # Static files
 ├── src/
 │   ├── components/       # Reusable components
-│   ├── features/         # Redux slices for items and costs
+│   ├── features/         # Redux slices for items and otherCosts
 │   ├── firebase/         # Firebase config and helpers
 │   ├── pages/            # Auth and Home pages
-│   ├── App.js
-│   ├── index.js
+│   ├── App.jsx
 │
-├── .env                  # Firebase environment variables
+│
 ├── package.json
 ├── README.md
+```
+
+🔧 Installation
+
+1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/project-cost-tracker.git
+cd project-cost-tracker
+```
+
+2. Install Dependencies
+
+```bash
+npm install
+```
+
+3. Configure Firebase
+   Create a Firebase project at https://console.firebase.google.com
+
+Enable Email/Password Authentication
+
+Create a Firestore Database
+
+(replace with your Firebase values):
+
+```bash
+apiKey=your_api_key
+authDomain=your_auth_domain
+projectId=your_project_id
+storageBucket=your_storage_bucket
+messagingSenderId=your_sender_id
+appId=your_app_id
+```
+
+▶️ Running the App
+
+```bash
+npm run dev
+Open your browser and navigate to: http://localhost:5173
+```
+
+```bash
+🛠 Tech Stack
+React.js
+
+Redux Toolkit
+
+Firebase (Auth + Firestore)
+
+Chakra UI
+
+Vite for development build tool
 ```

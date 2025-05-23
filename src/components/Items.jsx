@@ -25,7 +25,7 @@ import {
   cancelEditing,
   setEditName,
   setEditCost,
-} from "../redux/itemsSlice";
+} from "../features/itemsSlice";
 
 const Items = () => {
   const { isOpen, onToggle } = useDisclosure();

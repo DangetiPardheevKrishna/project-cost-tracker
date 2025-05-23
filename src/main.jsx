@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./store";
+import { store } from "./firebase/store.js";
 const theme = extendTheme({
   fonts: {
     heading: "Outfit, sans-serif",

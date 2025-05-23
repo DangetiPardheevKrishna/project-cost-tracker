@@ -25,7 +25,7 @@ import {
   cancelEditing,
   setEditDescription,
   setEditAmount,
-} from "../redux/otherCostsSlice";
+} from "../features/otherCostsSlice";
 
 const OtherCosts = () => {
   const { isOpen, onToggle } = useDisclosure();

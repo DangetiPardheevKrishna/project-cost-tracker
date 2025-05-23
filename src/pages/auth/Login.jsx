@@ -145,7 +145,7 @@ import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-toastify";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { auth } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 const Login = () => {
