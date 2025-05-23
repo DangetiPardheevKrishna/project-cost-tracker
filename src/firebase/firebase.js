@@ -11,6 +11,18 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
 };
 
+export const initFirebase = async () => {
+  const { initializeApp } = await import("firebase/app");
+  const { getAuth } = await import("firebase/auth");
+  const { getFirestore } = await import("firebase/firestore");
+
+  const app = initializeApp(firebaseConfig);
+  return {
+    auth: getAuth(app),
+    db: getFirestore(app),
+  };
+};
+
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 export const db = getFirestore(app);
