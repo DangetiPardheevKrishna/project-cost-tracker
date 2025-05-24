@@ -25,6 +25,7 @@ export const fetchItems = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const userId = getCurrentUserId();
+      console.log(userId);
       const q = query(collection(db, "Items"), where("userId", "==", userId));
       const querySnapshot = await getDocs(q);
       return querySnapshot.docs.map((doc) => ({

@@ -2,9 +2,23 @@ import { Flex, Text, Button } from "@chakra-ui/react";
 import { FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { getAuth, signOut } from "firebase/auth";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const auth = getAuth();
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("userId");
+      toast.success("Logout successful", { position: "bottom-right" });
+      navigate("/login");
+    } catch (error) {
+      toast.error(error.message, { position: "top-center" });
+    }
+  };
+
   return (
     <Flex
       as="nav"
@@ -34,12 +48,7 @@ const Navbar = () => {
         _active={{
           transform: "scale(0.98)",
         }}
-        onClick={() => {
-          navigate("/login");
-          toast.success("Logout Success", {
-            position: "bottom-right",
-          });
-        }}
+        onClick={handleLogout}
       >
         Logout
       </Button>

@@ -5,7 +5,8 @@ import App from "./App.jsx";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./firebase/store.js";
+import { store, persistor } from "./firebase/store.js";
+import { PersistGate } from "redux-persist/integration/react";
 const theme = extendTheme({
   fonts: {
     heading: "Outfit, sans-serif",
@@ -15,9 +16,12 @@ const theme = extendTheme({
 createRoot(document.getElementById("root")).render(
   <ChakraProvider theme={theme}>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <PersistGate loading={null} persistor={persistor}>
+        {" "}
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
     </Provider>
   </ChakraProvider>
 );

@@ -1,9 +1,9 @@
-import { Flex } from "@chakra-ui/react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import SignUp from "./pages/auth/SignUp";
 import Login from "./pages/auth/Login";
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import Home from "./pages/Home";
+import { auth } from "./firebase/firebase";
 
 const ToastContainer = lazy(() =>
   import("react-toastify").then((module) => ({
@@ -17,6 +17,7 @@ export const toast = lazy(() =>
   }))
 );
 const App = () => {
+  console.log(auth.currentUser?.uid);
   return (
     <>
       <Routes>
@@ -25,7 +26,6 @@ const App = () => {
         <Route path="/home" element={<Home />} />
       </Routes>
       <Suspense fallback={null}>
-        {" "}
         <ToastContainer />
       </Suspense>
     </>

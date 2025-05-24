@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -19,7 +19,11 @@ import {
 import { Eye, EyeOff } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
 import { auth, db, googleProvider } from "../../firebase/firebase.js";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithPopup,
+} from "firebase/auth";
 import { setDoc, doc, getDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -60,7 +64,7 @@ const SignUp = () => {
         lastName,
         createdAt: new Date().toISOString(),
       });
-
+      localStorage.setItem("userId", auth.currentUser.uid);
       toast.success("Registration successful!");
       navigate("/home");
     } catch (error) {
@@ -104,7 +108,17 @@ const SignUp = () => {
       setIsGoogleLoading(false);
     }
   };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in.
+        navigate("/home");
+      }
+    });
 
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, [navigate]);
   return (
     <Flex minH="100vh" align="center" justify="center" bg="gray.50">
       <Box

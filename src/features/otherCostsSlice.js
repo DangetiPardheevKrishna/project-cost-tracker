@@ -20,6 +20,7 @@ export const fetchOtherCosts = createAsyncThunk(
   "OtherCosts/fetchOtherCosts",
   async () => {
     const userId = getCurrentUserId();
+    console.log(userId);
     const q = query(
       collection(db, "OtherCosts"),
       where("userId", "==", userId)

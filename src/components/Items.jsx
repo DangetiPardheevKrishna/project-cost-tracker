@@ -47,14 +47,10 @@ const Items = () => {
   } = useSelector((state) => state.items);
 
   // Fetch items on component mount
-  const fetchedOnce = useRef(false);
 
   useEffect(() => {
-    if (!fetchedOnce.current) {
-      dispatch(fetchItems());
-      fetchedOnce.current = true;
-    }
-  }, [dispatch]);
+    dispatch(fetchItems());
+  }, []);
 
   // Filter and sort items
   const filteredAndSortedItems = React.useMemo(() => {
